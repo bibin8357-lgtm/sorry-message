@@ -1,117 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Be My Valentine 💖</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #fdfcfb 0%, #e2d1f9 100%);
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --primary-pink: #f8bbd0;
+            --primary-purple: #e1bee7;
+            --text-color: #6d5c6e;
+            --btn-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
 
-  <!-- Cute fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+            background: var(--bg-gradient);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: var(--text-color);
+        }
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #fff1eb, #fde2e4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Poppins', sans-serif;
-      overflow: hidden;
-    }
+        /* Container & Animation */
+        .container {
+            width: 90%;
+            max-width: 400px;
+            perspective: 1000px;
+        }
 
-    .card {
-      background: linear-gradient(180deg, #ffe4ec, #ffd1dc);
-      width: 320px;
-      padding: 30px 25px;
-      border-radius: 30px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-      text-align: center;
-      position: relative;
-    }
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.3);
+            display: none; /* Hidden by default */
+            animation: transitionIn 0.8s ease-out;
+        }
 
-    .emoji {
-      font-size: 70px;
-      margin-bottom: 10px;
-    }
+        .card.active { display: block; }
 
-    h1 {
-      font-family: 'Pacifico', cursive;
-      color: #6b3e4b;
-      font-size: 28px;
-      margin: 10px 0;
-    }
+        @keyframes transitionIn {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
 
-    p {
-      color: #6b3e4b;
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
+        /* Typography */
+        h1 { font-family: 'Dancing Script', cursive; font-size: 2.5rem; margin-bottom: 10px; }
+        p { font-size: 1.1rem; line-height: 1.6; color: #8a7a8b; }
 
-    button {
-      padding: 12px 26px;
-      border-radius: 25px;
-      border: none;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+        /* Buttons */
+        .btn {
+            background: var(--primary-purple);
+            border: none;
+            padding: 12px 35px;
+            border-radius: 25px;
+            color: #5e4b5e;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+            box-shadow: var(--btn-shadow);
+        }
 
-    #yesBtn {
-      background: linear-gradient(135deg, #f7a1c4, #f48fb1);
-      color: white;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      margin-right: 10px;
-    }
+        .btn:hover { transform: translateY(-2px); filter: brightness(0.95); }
 
-    #noBtn {
-      background: #e0e0e0;
-      color: #555;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 30px;
-    }
+        /* Interaction List Items */
+        .reveal-box {
+            background: linear-gradient(to right, #ffccbc, #ffab91);
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+            min-height: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    #message {
-      display: none;
-      font-family: 'Pacifico', cursive;
-      font-size: 22px;
-      color: #ff4d6d;
-      margin-top: 15px;
-    }
-  </style>
+        .reveal-box span { font-weight: 500; }
+        .box-2 { background: linear-gradient(to right, #f8bbd0, #f06292); color: white; }
+        .box-3 { background: linear-gradient(to right, #d1c4e9, #9575cd); color: white; }
+
+        /* Final Letter Styling */
+        .letter {
+            text-align: left;
+            font-size: 0.95rem;
+            background: url('https://www.transparenttextures.com/patterns/pinstriped-suit.png');
+        }
+
+        .heart { color: #e91e63; font-size: 1.5rem; }
+    </style>
 </head>
 <body>
 
-  <div class="card">
-    <div class="emoji">🐰💗</div>
+<div class="container">
+    <div class="card active" id="p1">
+        <h1>Hey Cutiepie</h1>
+        <p>Can we talk for a moment? There's something important I want to tell you.</p>
+        <button class="btn" onclick="nextPage('p1', 'p2')">Continue ❤️</button>
+    </div>
 
-    <h1>Hey Archana Madhu</h1>
-    <p>
-      Can we talk for a moment?<br>
-      There’s something important I want to ask you.
-    </p>
+    <div class="card" id="p2">
+        <p>I know I hurt you... and I've been feeling bad about it.</p>
+        <button class="btn" onclick="nextPage('p2', 'p3')">Next →</button>
+    </div>
 
-    <button id="yesBtn" onclick="yesClick()">Yes 💖</button>
-    <button id="noBtn" onmouseover="moveNo()">No 🙃</button>
+    <div class="card" id="p3">
+        <h1>Little things I want to tell you...</h1>
+        <p style="font-size: 0.8rem;">Tap each one</p>
+        
+        <div class="reveal-box box-1" onclick="reveal(this, 'I messed up... and I\'m really sorry.')">
+            <span>❤️</span>
+        </div>
+        <div class="reveal-box box-2" onclick="reveal(this, 'I promise I\'ll be better for you.')">
+            <span>❤️</span>
+        </div>
+        <div class="reveal-box box-3" onclick="reveal(this, 'You mean so much to me.')">
+            <span>❤️</span>
+        </div>
 
-    <div id="message">Yay! Be my Valentine 🌹</div>
-  </div>
+        <button class="btn" onclick="nextPage('p3', 'p4')">My message →</button>
+    </div>
 
-  <script>
-    function moveNo() {
-      const btn = document.getElementById("noBtn");
-      const x = Math.random() * (window.innerWidth - 120);
-      const y = Math.random() * (window.innerHeight - 60);
-      btn.style.left = x + "px";
-      btn.style.top = y + "px";
+    <div class="card" id="p4">
+        <h1>From my heart...</h1>
+        <div style="font-size: 3rem; margin: 20px 0;">🐱💝🐱</div>
+        <p>↓ Tap to see message ↓</p>
+        <div class="reveal-box box-2" style="background: white; border: 1px solid #f8bbd0; color: #f06292;" onclick="nextPage('p4', 'p5')">
+            <h1 style="font-size: 2rem;">I'm Sorry</h1>
+        </div>
+    </div>
+
+    <div class="card" id="p5">
+        <h1 style="color: #6d5c6e;">I'm Sorry</h1>
+        <div class="letter">
+            <p>For hurting you and making you feel upset, I'm truly sorry. I never wanted to be the reason behind your tears or your silence.</p>
+            <p>You matter to me more than I always manage to show, and I hate that I let you down. I promise to grow, to listen, and to be better for you every single day.</p>
+            <p>Thank you for staying, for caring, and for being you. I'm really trying... and I hope you can forgive me.</p>
+        </div>
+        <div class="heart">❤</div>
+    </div>
+</div>
+
+<script>
+    function nextPage(currentId, nextId) {
+        const current = document.getElementById(currentId);
+        const next = document.getElementById(nextId);
+
+        // Add a small fade-out effect before switching
+        current.style.opacity = '0';
+        current.style.transform = 'scale(0.9)';
+        
+        setTimeout(() => {
+            current.classList.remove('active');
+            next.classList.add('active');
+        }, 400);
     }
 
-    function yesClick() {
-      document.getElementById("message").style.display = "block";
+    function reveal(el, text) {
+        el.style.transform = 'scale(1.05)';
+        el.innerHTML = `<span style="animation: transitionIn 0.5s forwards">${text}</span>`;
+        setTimeout(() => el.style.transform = 'scale(1)', 200);
     }
-  </script>
+</script>
 
 </body>
 </html>
