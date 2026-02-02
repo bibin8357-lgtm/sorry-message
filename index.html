@@ -96,22 +96,19 @@
 
         /* Final Letter Styling */
         .letter {
-            text-align: left;
-            font-size: 1.1rem;
-            background: transparent;
-            line-height: 1.8;
-            padding: 10px;
-            color: #6d5c6e;
-        }
+    text-align: left;
+    font-size: 1.1rem;
+    background: transparent;
+    line-height: 1.8;
+    padding: 10px;
+    color: #6d5c6e;
+}
+
 
         .heart { color: #e91e63; font-size: 1.5rem; }
     </style>
 </head>
 <body>
-
-<audio id="myAudio" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
 
 <div class="container">
     <div class="card active" id="p1">
@@ -152,7 +149,7 @@
     </div>
 
     <div class="card" id="p5">
-        <h1 style="color: #6d5c6e;">I'm Sorry Babbee</h1>
+        <h1 style="color: #6d5c6e;">I'm Sorry Babbee And ni nte ellam ellam alleee</h1>
         <div class="letter">
             <p>Babby njn ninod othiri thet cheythu , kore arinjondum ariyatteyum ellam but srsly ithokke ninne itrem hurt cheyuvenn ennik arillrnn njn inni ithonum avarthikkilla Promise Pazhe aaaa Bibin avillaa.</p>
             <p>onnu nallapole shemmik machanne ....kore kore ummaa tharaa hicky tharaa ennim love letter ezuthi tharaa kammal medich thara mala vala ellam medich tharaa shemmik sorry plzzz nte ponnn allee njn begg cheyunne vere photo aych thara.</p>
@@ -164,15 +161,10 @@
 
 <script>
     function nextPage(currentId, nextId) {
-        // Starts the music on the first click
-        var music = document.getElementById("myAudio");
-        music.play().catch(function(error) {
-            console.log("Audio play failed: ", error);
-        });
-
         const current = document.getElementById(currentId);
         const next = document.getElementById(nextId);
 
+        // Add a small fade-out effect before switching
         current.style.opacity = '0';
         current.style.transform = 'scale(0.9)';
         
