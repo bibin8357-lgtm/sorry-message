@@ -176,7 +176,7 @@
     function createHeart() {
         const h = document.createElement('div');
         h.classList.add('heart');
-        h.innerHTML = ['❤️','💖','💕','🩵','❤️‍🩹'][Math.floor(Math.random()*3)];
+        h.innerHTML = ['❤️','💖','💕'][Math.floor(Math.random()*3)];
         h.style.left = Math.random() * 100 + 'vw';
         h.style.fontSize = (Math.random() * 20 + 10) + 'px';
         h.style.animationDuration = (Math.random() * 2 + 3) + 's';
