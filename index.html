@@ -1,134 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>I'm Sorry</title>
+  <meta charset="UTF-8">
+  <title>Be My Valentine 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Cute fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
-<style>
-* {
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #fff1eb, #fde2e4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
 
-body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(135deg, #fff1f6, #f6f1ff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    .card {
+      background: linear-gradient(180deg, #ffe4ec, #ffd1dc);
+      width: 320px;
+      padding: 30px 25px;
+      border-radius: 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+      text-align: center;
+      position: relative;
+    }
 
-.card {
-  width: 90%;
-  max-width: 360px;
-  background: #fffaf5;
-  border-radius: 28px;
-  padding: 28px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-  text-align: center;
-  animation: fadeIn 0.6s ease;
-}
+    .emoji {
+      font-size: 70px;
+      margin-bottom: 10px;
+    }
 
-h1 {
-  font-family: 'Pacifico', cursive;
-  color: #6d4c5b;
-  margin-bottom: 10px;
-}
+    h1 {
+      font-family: 'Pacifico', cursive;
+      color: #6b3e4b;
+      font-size: 28px;
+      margin: 10px 0;
+    }
 
-p {
-  color: #555;
-  font-size: 15px;
-  line-height: 1.6;
-}
+    p {
+      color: #6b3e4b;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
 
-.button {
-  margin-top: 22px;
-  padding: 12px 28px;
-  border: none;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #f6b8c7, #d9c2ff);
-  color: #5a2a3a;
-  font-size: 14px;
-  cursor: pointer;
-}
+    button {
+      padding: 12px 26px;
+      border-radius: 25px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
 
-.button:hover {
-  opacity: 0.9;
-}
+    #yesBtn {
+      background: linear-gradient(135deg, #f7a1c4, #f48fb1);
+      color: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      margin-right: 10px;
+    }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-</style>
+    #noBtn {
+      background: #e0e0e0;
+      color: #555;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 30px;
+    }
+
+    #message {
+      display: none;
+      font-family: 'Pacifico', cursive;
+      font-size: 22px;
+      color: #ff4d6d;
+      margin-top: 15px;
+    }
+  </style>
 </head>
-
 <body>
 
-<div id="app"></div>
+  <div class="card">
+    <div class="emoji">🐰💗</div>
 
-<script>
-const pages = [
+    <h1>Hey Archana Madhu</h1>
+    <p>
+      Can we talk for a moment?<br>
+      There’s something important I want to ask you.
+    </p>
 
-{
-  title: "Hey Cutiepie",
-  text: "Can we talk for a moment? There's something important I want to tell you.",
-  button: "Continue ❤️"
-},
+    <button id="yesBtn" onclick="yesClick()">Yes 💖</button>
+    <button id="noBtn" onmouseover="moveNo()">No 🙃</button>
 
-{
-  title: "",
-  text: "I know I hurt you… and I’ve been feeling bad about it.",
-  button: "Next →"
-},
+    <div id="message">Yay! Be my Valentine 🌹</div>
+  </div>
 
-{
-  title: "Little things I want to tell you…",
-  text: "I messed up… and I’m really sorry for that.\n\nI promise I’ll be better for you.\n\nYou mean so much to me.",
-  button: "My message →"
-},
+  <script>
+    function moveNo() {
+      const btn = document.getElementById("noBtn");
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 60);
+      btn.style.left = x + "px";
+      btn.style.top = y + "px";
+    }
 
-{
-  title: "From my heart…",
-  text: "",
-  button: "Tap to see message ↓"
-},
-
-{
-  title: "I'm Sorry",
-  text: "For hurting you and making you feel upset, I’m truly sorry. I never wanted to be the reason behind your tears or your silence.\n\nYou matter to me more than I always manage to show, and I hate that I let you down.\n\nI promise to grow, to listen, and to be better for you every single day.\n\nThank you for staying, for caring, and for being you.\n\nI’m really trying… and I hope you can forgive me.",
-  button: ""
-}
-
-];
-
-let index = 0;
-const app = document.getElementById("app");
-
-function render() {
-  const page = pages[index];
-  app.innerHTML = `
-    <div class="card">
-      ${page.title ? `<h1>${page.title}</h1>` : ""}
-      ${page.text ? `<p>${page.text.replace(/\n/g,"<br>")}</p>` : ""}
-      ${page.button ? `<button class="button" onclick="next()">${page.button}</button>` : ""}
-    </div>
-  `;
-}
-
-function next() {
-  if (index < pages.length - 1) {
-    index++;
-    render();
-  }
-}
-
-render();
-</script>
+    function yesClick() {
+      document.getElementById("message").style.display = "block";
+    }
+  </script>
 
 </body>
 </html>
