@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I'm Sorry</title>
+    <title>I'm Sorry Archana</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-gradient: linear-gradient(135deg, #fdfcfb 0%, #e2d1f9 100%);
-            --card-bg: rgba(255, 255, 255, 0.7);
+            --card-bg: rgba(255, 255, 255, 0.85);
             --primary-pink: #f8bbd0;
             --primary-purple: #e1bee7;
-            --text-color: #6d5c6e;
-            --btn-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            --text-color: #5e4b5e;
         }
 
         body {
@@ -28,155 +27,161 @@
             color: var(--text-color);
         }
 
-        /* Container & Animation */
         .container {
             width: 90%;
             max-width: 400px;
-            perspective: 1000px;
+            position: relative;
+            z-index: 10;
         }
 
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 40px;
-            padding: 30px;
+            backdrop-filter: blur(15px);
+            border-radius: 35px;
+            padding: 25px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border: 1px solid rgba(255,255,255,0.3);
-            display: none; /* Hidden by default */
-            animation: transitionIn 0.8s ease-out;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.5);
+            display: none;
+            animation: fadeIn 0.6s ease-out;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .card.active { display: block; }
 
-        @keyframes transitionIn {
-            from { opacity: 0; transform: scale(0.9) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Typography */
-        h1 { font-family: 'Dancing Script', cursive; font-size: 2.5rem; margin-bottom: 10px; }
-        p { font-size: 1.1rem; line-height: 1.6; color: #8a7a8b; }
+        h1 { font-family: 'Dancing Script', cursive; font-size: 2.2rem; margin-bottom: 10px; color: #ad1457; }
+        p { font-size: 1.05rem; line-height: 1.6; }
 
-        /* Buttons */
         .btn {
             background: var(--primary-purple);
             border: none;
-            padding: 12px 35px;
+            padding: 12px 30px;
             border-radius: 25px;
             color: #5e4b5e;
             font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: 0.3s;
-            box-shadow: var(--btn-shadow);
         }
 
-        .btn:hover { transform: translateY(-2px); filter: brightness(0.95); }
+        .btn:active { transform: scale(0.95); }
 
-        /* Interaction List Items */
         .reveal-box {
-            background: linear-gradient(to right, #ffccbc, #ffab91);
-            margin: 15px 0;
-            padding: 20px;
-            border-radius: 30px;
+            margin: 12px 0;
+            padding: 18px;
+            border-radius: 20px;
             cursor: pointer;
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
-            min-height: 25px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            color: white;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .box-1 { background: linear-gradient(to right, #ffccbc, #ffab91); }
+        .box-2 { background: linear-gradient(to right, #f8bbd0, #f06292); }
+        .box-3 { background: linear-gradient(to right, #d1c4e9, #9575cd); }
+
+        .letter { text-align: left; background: rgba(255,255,255,0.4); padding: 15px; border-radius: 20px; margin-top: 15px; }
+        .letter p { border-left: 3px solid #f06292; padding-left: 10px; margin-bottom: 15px; font-size: 0.95rem; }
+
+        .heart {
+            position: absolute;
+            color: #f06292;
+            pointer-events: none;
+            animation: floatUp 4s linear infinite;
+            z-index: 1;
         }
 
-        .reveal-box span { font-weight: 500; }
-        .box-2 { background: linear-gradient(to right, #f8bbd0, #f06292); color: white; }
-        .box-3 { background: linear-gradient(to right, #d1c4e9, #9575cd); color: white; }
-
-        /* Final Letter Styling */
-        .letter {
-    text-align: left;
-    font-size: 1.1rem;
-    background: transparent;
-    line-height: 1.8;
-    padding: 10px;
-    color: #6d5c6e;
-}
-
-
-        .heart { color: #e91e63; font-size: 1.5rem; }
+        @keyframes floatUp {
+            0% { transform: translateY(110vh) scale(0); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
     </style>
 </head>
 <body>
+
+<audio id="music" loop>
+    <source src="sorry.mp3" type="audio/mpeg">
+</audio>
+
 <div class="container">
     <div class="card active" id="p1">
         <h1>Hey Archana Madthu</h1>
         <p>Nammak korch neram onum mindayallo eehh? last yr kore hurt cheyte allee ayin olla oru apologya.</p>
-        <button class="btn" onclick="nextPage('p1', 'p2')">click here babe ❤️</button>
+        <button class="btn" onclick="start('p1', 'p2')">click here babe ❤️</button>
     </div>
 
     <div class="card" id="p2">
         <p>I know njn ninne kore hurt akkitt inden... and Ayinte full responsibityum ennika... etra sorry paranjallum athonum ninte mindil ninn orikallum povilla ennum ennik ariyaa but .</p>
-        <button class="btn" onclick="nextPage('p2', 'p3')">Next →</button>
+        <button class="btn" onclick="next('p2', 'p3')">Next →</button>
     </div>
 
     <div class="card" id="p3">
         <h1>Njn vere korach kunj kunj karagall parayaa nokkk...</h1>
-        <p style="font-size: 0.8rem;">Tap each one</p>
-        
-        <div class="reveal-box box-1" onclick="reveal(this, 'Njn Kore hurt cheythuu I know onnu shemik.. and I\'m really sorry.')">
-            <span>Njekk pattyy</span>
-        </div>
-        <div class="reveal-box box-2" onclick="reveal(this, 'I promise and njn enni hurt akkuvella.')">
-            <span>onnudeyy</span>
-        </div>
-        <div class="reveal-box box-3" onclick="reveal(this, 'Ninte Bibin allee last ayit shemmik sorryy.')">
-            <span>last ayit sathym</span>
-        </div>
-
-        <button class="btn" onclick="nextPage('p3', 'p4')">My message →</button>
+        <p style="font-size: 0.8rem; opacity: 0.7;">Tap each one</p>
+        <div class="reveal-box box-1" onclick="rev(this, 'Njn Kore hurt cheythuu I know onnu shemik.. and I\'m really sorry.')">Njekk pattyy</div>
+        <div class="reveal-box box-2" onclick="rev(this, 'I promise and njn enni hurt akkuvella.')">onnudeyy</div>
+        <div class="reveal-box box-3" onclick="rev(this, 'Ninte Bibin allee last ayit shemmik sorryy.')">last ayit sathym</div>
+        <button class="btn" onclick="next('p3', 'p4')">My message →</button>
     </div>
 
     <div class="card" id="p4">
-        <h1>From your Bibin with lots of love...</h1>
-        <div style="font-size: 3rem; margin: 20px 0;">🫶🏻🥹😙</div>
-        <p>↓ Evde click kare... vere oru karayam kude ind ↓</p>
-        <div class="reveal-box box-2" style="background: white; border: 1px solid #f8bbd0; color: #f06292;" onclick="nextPage('p4', 'p5')">
-            <h1 style="font-size: 2rem;">I'm Sorry Archuvve</h1>
+        <h1>From Bibin with love...</h1>
+        <div style="font-size: 3rem; margin: 15px 0;">🫶🏻🥹😙</div>
+        <p>↓ Click below... one last thing ↓</p>
+        <div class="reveal-box box-2" style="background: white; color: #f06292; border: 2px solid #f06292;" onclick="next('p4', 'p5')">
+            <h2 style="margin:0">I'm Sorry Archuvve</h2>
         </div>
     </div>
 
     <div class="card" id="p5">
-        <h1 style="color: #6d5c6e;">I'm Sorry Babbee And ni nte ellam ellam alleee</h1>
+        <h1>I'm Sorry Babbee</h1>
+        <p>Ni nte ellam ellam alleee</p>
         <div class="letter">
             <p>Babby njn ninod othiri thet cheythu , kore arinjondum ariyatteyum ellam but srsly ithokke ninne itrem hurt cheyuvenn ennik arillrnn njn inni ithonum avarthikkilla Promise Pazhe aaaa Bibin avillaa.</p>
             <p>onnu nallapole shemmik machanne ....kore kore ummaa tharaa hicky tharaa ennim love letter ezuthi tharaa kammal medich thara mala vala ellam medich tharaa shemmik sorry plzzz nte ponnn allee njn begg cheyunne vere photo aych thara.</p>
             <p>Nte ponnn archana allee...sorryy ennod shemmik and nte aaaaa pazhhe archanne avammo plzzz ennik aaa archanne kore miss cheyunnuu plzz ennod shemmikkannee ummmaaahhh.</p>
         </div>
-        <div class="heart">❤</div>
+        <div style="font-size: 1.5rem; margin-top: 15px;">❤️✨🔗</div>
     </div>
 </div>
 
 <script>
-    function nextPage(currentId, nextId) {
-        const current = document.getElementById(currentId);
-        const next = document.getElementById(nextId);
-
-        // Add a small fade-out effect before switching
-        current.style.opacity = '0';
-        current.style.transform = 'scale(0.9)';
-        
-        setTimeout(() => {
-            current.classList.remove('active');
-            next.classList.add('active');
-        }, 400);
+    function start(curr, nxt) {
+        const audio = document.getElementById('music');
+        // This triggers when she clicks the first button
+        audio.play().catch(error => {
+            console.log("Audio playback failed:", error);
+        });
+        setInterval(createHeart, 400);
+        next(curr, nxt);
     }
 
-    function reveal(el, text) {
-        el.style.transform = 'scale(1.05)';
-        el.innerHTML = `<span style="animation: transitionIn 0.5s forwards">${text}</span>`;
-        setTimeout(() => el.style.transform = 'scale(1)', 200);
+    function next(currId, nextId) {
+        document.getElementById(currId).style.display = 'none';
+        document.getElementById(nextId).style.display = 'block';
+    }
+
+    function rev(el, text) {
+        el.innerHTML = `<span style="animation: fadeIn 0.4s">${text}</span>`;
+    }
+
+    function createHeart() {
+        const h = document.createElement('div');
+        h.classList.add('heart');
+        h.innerHTML = ['❤️','💖','💕'][Math.floor(Math.random()*3)];
+        h.style.left = Math.random() * 100 + 'vw';
+        h.style.fontSize = (Math.random() * 20 + 10) + 'px';
+        h.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 4000);
     }
 </script>
 
